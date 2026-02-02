@@ -90,7 +90,7 @@ const extractSkills = (text) => {
         .split(/[,•|·\n:()]/)
         .map(s => s.trim())
         .filter(s => s.length > 2 && s.length < 60)
-        .filter(s => !/^[\-–—\s]+$/.test(s))
+      .filter(s => !/^[-–—\s]+$/.test(s))
         .filter(s => !/^\d+$/.test(s))  // Remove pure numbers
         .filter(s => !/(^(programming|languages|frameworks|web|development|data|databases|tools|technologies|specializations|platforms|competencies)$)/i.test(s))
         .filter(s => !s.toLowerCase().includes('education'))
