@@ -1,14 +1,10 @@
 import * as pdfjsLib from 'pdfjs-dist';
 import mammoth from 'mammoth';
 
-// Configure PDF.js worker
+
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
-/**
- * Extract text from PDF file
- * @param {File} file - PDF file object
- * @returns {Promise<string>} Extracted text
- */
+
 export const extractTextFromPDF = async (file) => {
   try {
     const arrayBuffer = await file.arrayBuffer();
@@ -16,7 +12,7 @@ export const extractTextFromPDF = async (file) => {
     
     let fullText = '';
     
-    // Extract text from all pages
+    
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
       const textContent = await page.getTextContent();
@@ -31,11 +27,7 @@ export const extractTextFromPDF = async (file) => {
   }
 };
 
-/**
- * Extract text from DOCX file
- * @param {File} file - DOCX file object
- * @returns {Promise<string>} Extracted text
- */
+
 export const extractTextFromDOCX = async (file) => {
   try {
     const arrayBuffer = await file.arrayBuffer();
